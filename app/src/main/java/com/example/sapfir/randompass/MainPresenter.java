@@ -2,17 +2,18 @@ package com.example.sapfir.randompass;
 
 import android.util.Log;
 
+import com.arellomobile.mvp.InjectViewState;
+import com.arellomobile.mvp.MvpPresenter;
 
-public class MainPresenter implements MainContract.Presenter {
+@InjectViewState
+public class MainPresenter extends MvpPresenter<View> implements Presenter   {
 
     private static final String TAG = "MainPresenter";
     private String message;
-    private MainContract.View view;
-    private MainContract.Repository repository;
+    private Repository repository;
 
 
-    public MainPresenter(MainContract.View view) {
-        this.view = view;
+    MainPresenter() {
         this.repository = new MainRepository();
         Log.d(TAG, "Constructor");
     }
@@ -20,7 +21,8 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void onButtonWasClicked() {
         message = repository.loadMessage();
-        view.showText(message);
+     //   MainActivity.showText(message);
+        getViewState().showText(message);
         Log.d(TAG, "buttonclick");
     }
 

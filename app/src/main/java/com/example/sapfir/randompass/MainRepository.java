@@ -2,7 +2,7 @@ package com.example.sapfir.randompass;
 
 import android.util.Log;
 
-public class MainRepository implements MainContract.Repository {
+public class MainRepository implements Repository {
 
 
     private static final String TAG = "MainRepository";
